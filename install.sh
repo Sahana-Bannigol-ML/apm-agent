@@ -64,14 +64,14 @@ install_fluent_bit()
         | tr -d '"' \
         | xargs wget -q
     elif [ "$SYSTEM_TYPE" = "systemd" ] && [ "$ARCH" = "aarch64" ]; then
-        logit "download latest fluent-bit release for $ARCH"
+        echo "download latest fluent-bit release for $ARCH"
         curl -sL https://api.github.com/repos/snappyflow/apm-agent/releases?per_page=500 \
         | grep -w "browser_download_url"|grep fluent-bit-arm \
         | head -n 1 \
         | cut -d":" -f 2,3 \
         | tr -d '"' \
         | xargs wget -q
-        logit "download latest arm64 fluent-bit release done"
+        echo "download latest arm64 fluent-bit release done"
     else
         curl https://api.github.com/repos/snappyflow/apm-agent/releases?per_page=500 \
         | grep -w "browser_download_url"|grep centos6-td-agent-bit \
@@ -114,14 +114,14 @@ upgrade_fluent_bit()
         | tr -d '"' \
         | xargs wget -q
     elif [ "$SYSTEM_TYPE" = "systemd" ] && [ "$ARCH" = "aarch64" ]; then
-        logit "download latest fluent-bit release for $ARCH"
+        echo "download latest fluent-bit release for $ARCH"
         curl -sL https://api.github.com/repos/snappyflow/apm-agent/releases?per_page=500 \
         | grep -w "browser_download_url"|grep fluent-bit-arm \
         | head -n 1 \
         | cut -d":" -f 2,3 \
         | tr -d '"' \
         | xargs wget -q
-        logit "download latest arm64 fluent-bit release done"
+        echo "download latest arm64 fluent-bit release done"
     else
         curl https://api.github.com/repos/snappyflow/apm-agent/releases?per_page=500 \
         | grep -w "browser_download_url"|grep centos6-td-agent-bit \
